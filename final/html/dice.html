@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="hadi mokhtari" />
+    <meta name="description" content="about hadi mokhtari" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" href="../favicon/favicon-16x16.png" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script src="https://kit.fontawesome.com/4daa6596b7.js" crossorigin="anonymous"></script>
+    <script src="../script/jquery-3.4.1.min.js" defer></script>
+    <script src="../script/dice.js" defer="defer"></script>
+    <title>Assignment08 | COMP2132</title>
+</head>
+
+<body id="wrapper">
+    <header>
+        <h1>dice game - hadi mokhtari</h1>
+    </header>
+    <main>
+        <div id="winner-Display">
+            <div class="content">
+                <p id="winner">hadi</p>
+                <p>“Click To Start A New Game"</p>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <div class="tas">
+                    <img class="img1-1 img" src="../images/dice1.png" alt="#" />
+                    <img class="img1-2 img" src="../images/dice1.png" alt="#" />
+                </div>
+                <p class="PlayerName Player1Name">Player 1</p>
+                <div  class="dice">
+                    <p class="Player1">Score: 00</p>
+                    <p id="totals1">Total: 00</p>
+                    <p id="acTotals1">Accumulated Total: 00</p>
+                </div>
+            </div>
+            <div>
+                <div class="tas">
+                    <img class="img2-1 img" src="../images/dice1.png" alt="#" />
+                    <img class="img2-2 img" src="../images/dice1.png" alt="#" />
+                </div>
+                <p class="PlayerName">Computer</p>
+                <div class="dice">
+                    <p class="Player2">Score: 00</p>
+                    <p id="totals2">Total: 00</p>
+                    <p id="acTotals2">Accumulated Total: 00</p>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <button type="button" class="btn" id="roll">Roll The Dice</button>
+            <button type="button" class="btn" id="reset">Reset</button>
+            <input type="text" value="Player 1" id="player-name">
+        </div>
+    </main>
+    <footer>
+        <p>Copy<span>&copy;</span>- COMP2132</p>
+    </footer>
+</body>
+<div id="pop-up">
+    <div>
+        <p>
+            "LETS PLAY!"
+        </p>
+        <p>
+            "JUST ROLL THE DICE"
+        </p>
+        <img src="../images/popup.png" alt="">
+    </div>
+</div>
+
+</html>

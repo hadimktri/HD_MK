@@ -1,0 +1,217 @@
+@import "normalize.scss";
+@import "styles-pop-up.scss";
+@import "base.scss";
+
+$red-color: #dc3f2e;
+$black-color: #000000;
+$dark-grey-color: #414047;
+$light-grey-color: #c2c2c2;
+$white-color: #ffffff;
+$blue-color: #3f5199;
+$navy_color: rgb(0, 43, 100);
+
+@mixin rounded-shaded-box($x, $y, $corner, $color) {
+  box-shadow: $x $y 10px $dark-grey-color;
+  border-radius: $corner;
+}
+
+#winner-Display {
+  min-height: 80px;
+}
+
+header {
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
+  font-family: roboto;
+  text-align: center;
+  box-shadow: 0px 5px 5px $dark-grey-color;
+}
+
+h1 {
+  color: $dark-grey-color;
+  text-transform: uppercase;
+  font-family: roboto-bold;
+  margin: 5px;
+  font-size: 1.5em;
+}
+
+img {
+  margin: 0 5px;
+  width: 60px;
+  @include rounded-shaded-box(5px, 10px, 10px, $black-color);
+}
+
+main {
+
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  flex: 1;
+
+  div>div {
+    display: flex;
+    flex-direction: column;
+    background-color: $blue-color;
+    margin: 5px 0;
+
+    p {
+      color: $white-color;
+      text-align: center;
+      font-family: roboto-bold;
+      margin-left: 10px;
+    }
+
+    .tas {
+      flex-direction: row;
+      justify-content: center;
+
+
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(100, 201, 184);
+    padding: 5px;
+
+    p {
+      margin: 0;
+      padding: 5px;
+      color: $black-color;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+  }
+
+}
+.PlayerName{
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .btn {
+    background: $navy_color;
+    font-family: roboto-bold;
+    color: $white-color;
+    font-size: .9em;
+    padding: 10px 30px;
+    text-decoration: none;
+    margin: 3px 10px;
+    border: none;
+    @include rounded-shaded-box(5px, 5px, 8px, $dark-grey-color);
+  }
+
+  input {
+    font-family: roboto-bold;
+    color: $dark-grey-color;
+    font-size: .9em;
+    padding: 10px 30px;
+    text-decoration: none;
+    margin: 5px 10px;
+    border: none;
+    background-color: beige;
+    @include rounded-shaded-box(5px, 5px, 8px, $dark-grey-color);
+  }
+
+  .btn:hover,
+  .btn:focus,
+  .btn:active {
+    background-color: $blue-color;
+    color: $white-color;
+    transform: scale(1.01);
+  }
+}
+
+.dice {
+  background-color: #414047;
+}
+
+
+footer {
+  background-color: $black-color;
+  border-radius: 5px 5px 0 0;
+
+  p {
+    font-size: x-small;
+    margin: 0;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+    font-family: roboto;
+    text-align: center;
+    margin-top: 5px;
+    color: $white-color;
+  }
+}
+
+#wrapper {
+  background-image: url(../images/back-g.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+}
+
+@media (min-width:700px) {
+
+  .container p {
+    margin-left: 30px;
+
+  }
+
+  header {
+    padding: 10px;
+  }
+
+  .bottom {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .btn {
+    background: $navy_color;
+    font-family: roboto-bold;
+    color: $white-color;
+    margin: 10px;
+    border: none;
+    min-width: 150px;
+    @include rounded-shaded-box(5px, 5px, 8px, $dark-grey-color);
+  }
+
+  input {
+    font-family: roboto-bold;
+    color: $dark-grey-color;
+    text-decoration: none;
+    border: none;
+    @include rounded-shaded-box(5px, 5px, 8px, $dark-grey-color);
+  }
+
+  img {
+    margin: 20px;
+    width: 80px;
+    @include rounded-shaded-box(5px, 10px, 10px, $black-color);
+  }
+  .dice p{
+    font-size: 1.2em;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

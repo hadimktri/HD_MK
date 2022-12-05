@@ -4,7 +4,7 @@ let $totals1 = 0;
 let $totals2 = 0;
 let $poptimeout;
 let $i = 1;
-
+//---------------------------------------------------------------------class defined
 class Player {
     constructor($name, $score, $totalScore) {
         this.$name = $name;
@@ -13,12 +13,14 @@ class Player {
         this.$dices = [];
     }
 }
+//---------------------------------------------------------------------random number generating
 Player.prototype.Numb = function () {
     for (let x = 0; x < 2; x++) {
         let d = Math.floor(Math.random() * 6) + 1;
         this.$dices.push(d);
     } return this.$dices
 }
+//---------------------------------------------------------------------score possibilities checking
 Player.prototype.diceConditions = function (d1, d2) {
     if (d1 === d2 && d2 != 1) {
         return (d1 + d2) * 2;
@@ -28,7 +30,7 @@ Player.prototype.diceConditions = function (d1, d2) {
         return d1 + d2;
     }
 }
-
+//---------------------------------------------------------------------events
 $(document).on("ready", $poptimeout);
 $poptimeout = setTimeout(() => $("#pop-up").css("display", "block"), 1000);
 $(document).on("click", () => $("#pop-up").fadeOut());
@@ -55,7 +57,7 @@ $("#roll").on("click", function () {
         $i = 1;
     }
 });
-
+//---------------------------------------------------------------------main dice role function
 function rollTheDice() {
     setTimeout(function () {
         const player1 = new Player();
@@ -78,8 +80,9 @@ function rollTheDice() {
         $accumulatedTotal2 += $totals2
         $("#totals2").html(`Total: ${$totals2}`);
         $("#acTotals2").html(`Accumulated Total: ${$accumulatedTotal2}`);
+//----------------------------------------------------------------------------- compairing totals
         if ($totals1 !== $totals2) {
-            if ($totals1 > $totals2) {
+            if ($totals1 < $totals2) {
                 $("#winner").html("Computer WINS!");
             } else {
                 $("#winner").html(`${$("#player-name").val().toUpperCase()} WINS!`);

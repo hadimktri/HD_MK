@@ -14,6 +14,10 @@ $navy_color: rgb(0, 43, 100);
   box-shadow: $x $y 10px $dark-grey-color;
   border-radius: $corner;
 }
+@mixin flex-column ($flex, $column) {
+  display: flex;
+  flex-direction: column;
+}
 
 #winner-Display {
   min-height: 80px;
@@ -42,9 +46,9 @@ img {
 }
 
 main {
-
-  display: flex;
-  flex-direction: column;
+  @include flex-column ($flex, $column);
+  //display: flex;
+ // flex-direction: column;
   max-width: 100%;
   flex: 1;
 
@@ -80,7 +84,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(100, 201, 184);
+    background-color: #953341;
     padding: 5px;
 
     p {

@@ -38,6 +38,7 @@ $('.content').hide();
 
 $("#roll").on("click", function () {
     $("#roll").html("Roll The Dice");
+    $("#roll").css({"backgroundColor":"#3f5199","color":"black"})
     $(".content").fadeOut();
     $(".Player1Name").html($("#player-name").val().toUpperCase())
     $(".content").fadeOut();
@@ -45,7 +46,8 @@ $("#roll").on("click", function () {
         rollTheDice();
         $i++;
     } else if ($i === 4) {
-        $("#roll").html("New Round");
+        $("#roll").html("New Game");
+        $("#roll").css("backgroundColor","#953341")
         $('.content').slideToggle();
         $("#winner").addClass("rd");
         $totals2 = 0;
@@ -76,11 +78,14 @@ function rollTheDice() {
         $accumulatedTotal2 += $totals2
         $("#totals2").html(`Total: ${$totals2}`);
         $("#acTotals2").html(`Accumulated Total: ${$accumulatedTotal2}`);
-        if ($totals1 > $totals2) {
-            $("#winner").html("Computer WINS!");
-        } else {
-            $("#winner").html(`${$("#player-name").val().toUpperCase()} WINS!`);
-        }
+        if ($totals1 !== $totals2) {
+            if ($totals1 > $totals2) {
+                $("#winner").html("Computer WINS!");
+            } else {
+                $("#winner").html(`${$("#player-name").val().toUpperCase()} WINS!`);
+            }}else{
+                $("#winner").html(`Total scores are the same!`);
+            }
     }, 500);
 }
 

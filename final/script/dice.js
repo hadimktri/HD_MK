@@ -29,30 +29,6 @@ Player.prototype.diceConditions = function (d1, d2) {
     }
 
 }
-//---------------------------------------------------------------------events
-$(document).on("ready", $poptimeout);
-$poptimeout = setTimeout(() => $("#pop-up").css("display", "block"), 1000);
-$(document).on("click", () => $("#pop-up").fadeOut());
-$(document).on("click", () => clearTimeout($poptimeout));
-$("#reset").on("click", () => location.reload(true));
-$('.content').hide();
-$("#roll").on("click", function () {
-    $("#roll").html("Roll The Dice");
-    $("#roll").css("backgroundColor", "#3f5199")
-    $(".content").fadeOut();
-    $(".Player1Name").html($("#player-name").val().toUpperCase())
-    $(".content").fadeOut();
-    if ($i <= 3) {
-        rollTheDice();
-        $i++;
-    } else if ($i === 4) {
-        $("#roll").html("New Game");
-        $("#roll").css("backgroundColor", "#953341")
-        $('.content').slideToggle();
-        $(".img").attr("src", "../images/dice1.png");
-        $i = 1;
-    }
-});
 //---------------------------------------------------------------------main dice role function
 function rollTheDice() {
     setTimeout(function () {
@@ -84,4 +60,29 @@ function rollTheDice() {
         }
     }, 500);
 }
+//---------------------------------------------------------------------events
+$(document).on("ready", $poptimeout);
+$poptimeout = setTimeout(() => $("#pop-up").css("display", "block"), 600);
+$(document).on("click", () => $("#pop-up").fadeOut());
+$(document).on("click", () => clearTimeout($poptimeout));
+$("#reset").on("click", () => location.reload(true));
+$('.content').hide();
+$("#roll").on("click", function () {
+    $("#roll").html("Roll The Dice");
+    $("#roll").css("backgroundColor", "#3f5199")
+    $(".content").fadeOut();
+    $(".Player1Name").html($("#player-name").val().toUpperCase())
+    $(".content").fadeOut();
+    if ($i <= 3) {
+        rollTheDice();
+        $i++;
+    } else if ($i === 4) {
+        $("#roll").html("New Game");
+        $("#roll").css("backgroundColor", "#953341")
+        $('.content').slideToggle();
+        $(".img").attr("src", "../images/dice1.png");
+        $i = 1;
+    }
+});
+
 

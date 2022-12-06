@@ -27,7 +27,6 @@ Player.prototype.diceConditions = function (d1, d2) {
     } else {
         return d1 + d2;
     }
-
 }
 //---------------------------------------------------------------------main dice role function
 function rollTheDice() {
@@ -82,6 +81,8 @@ $("#roll").on("click", function () {
         $('.content').slideToggle();
         $(".img").attr("src", "../images/dice1.png");
         $i = 1;
+        $totals1 = 0;
+        $totals2 = 0;
     }
 });
 

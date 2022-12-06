@@ -36,7 +36,6 @@ function rollTheDice() {
         $(".img1-1").attr("src", `../images/dice${$dice11[0]}.png`);
         $(".img1-2").attr("src", `../images/dice${$dice11[1]}.png`);
         let $score1 = player1.diceConditions($dice11[0], $dice11[1])
-        player1.score = $score1
         $(".Player1").html(`Score: ${$score1}`);
         $totals1 += $score1;
         $("#totals1").html(`Total: ${$totals1}`);

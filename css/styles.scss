@@ -2,7 +2,7 @@
 @import "styles-pop-up.scss";
 @import "base.scss";
 
-$red-color: #dc3f2e;
+$red-color: #953341;
 $black-color: #000000;
 $dark-grey-color: #414047;
 $light-grey-color: #c2c2c2;
@@ -10,25 +10,27 @@ $white-color: #ffffff;
 $blue-color: #3f5199;
 $navy_color: rgb(0, 43, 100);
 
-@mixin rounded-shaded-box($x, $y, $corner, $color) {
+//---------------------------------------------------------------mixins
+@mixin rounded-shaded-box($x, $y, $rounded-corners) {
   box-shadow: $x $y 10px $dark-grey-color;
-  border-radius: $corner;
-}
-@mixin flex-column ($flex, $column) {
-  display: flex;
-  flex-direction: column;
+  border-radius: $rounded-corners;
 }
 
-#winner-Display {
-  min-height: 80px;
+@mixin flex-column ($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
 }
+
+
 
 header {
   padding: 5px;
   border-radius: 0 0 5px 5px;
   font-family: roboto;
-  text-align: center;
   box-shadow: 0px 5px 5px $dark-grey-color;
+  background-color: $white-color;
+  background-size: cover;
+  text-align: center;
 }
 
 h1 {
@@ -36,25 +38,17 @@ h1 {
   text-transform: uppercase;
   font-family: roboto-bold;
   margin: 5px;
-  font-size: 1.5em;
-}
-
-img {
-  margin: 0 5px;
-  width: 60px;
-  @include rounded-shaded-box(5px, 10px, 10px, $black-color);
+  margin-left: 30px;
+  font-size: 1.2em;
 }
 
 main {
-  @include flex-column ($flex, $column);
-  //display: flex;
- // flex-direction: column;
+  @include flex-column (flex, column);
   max-width: 100%;
   flex: 1;
 
   div>div {
-    display: flex;
-    flex-direction: column;
+    @include flex-column (flex, column);
     background-color: $blue-color;
     margin: 5px 0;
 
@@ -62,49 +56,36 @@ main {
       color: $white-color;
       text-align: center;
       font-family: roboto-bold;
-      margin-left: 10px;
+      margin-left: 15px;
+
     }
 
-    .tas {
-      flex-direction: row;
-      justify-content: center;
-
-
+    .dice {
+      background-color: #414047;
     }
 
     div {
-      display: flex;
-      flex-direction: row;
+      @include flex-column (flex, row);
       justify-content: center;
+
+      .tas {
+        @include flex-column (flex, row);
+        justify-content: center;
+      }
+
+      img {
+        margin: 5px 20px;
+        width: 60px;
+        @include rounded-shaded-box(5px, 10px, 8px);
+      }
+
     }
+
   }
-
-  .content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #953341;
-    padding: 5px;
-
-    p {
-      margin: 0;
-      padding: 5px;
-      color: $black-color;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-  }
-
-}
-.PlayerName{
-  font-size: 1.2em;
-  margin-top: 0;
 }
 
 .bottom {
-  display: flex;
-  flex-direction: column;
+  @include flex-column (flex, column);
   justify-content: center;
 
   .btn {
@@ -116,7 +97,7 @@ main {
     text-decoration: none;
     margin: 3px 10px;
     border: none;
-    @include rounded-shaded-box(5px, 5px, 8px, $dark-grey-color);
+    @include rounded-shaded-box(5px, 5px, 8px);
   }
 
   input {
@@ -128,7 +109,7 @@ main {
     margin: 5px 10px;
     border: none;
     background-color: beige;
-    @include rounded-shaded-box(5px, 5px, 8px, $dark-grey-color);
+    @include rounded-shaded-box(5px, 5px, 8px);
   }
 
   .btn:hover,
@@ -140,9 +121,6 @@ main {
   }
 }
 
-.dice {
-  background-color: #414047;
-}
 
 
 footer {
@@ -161,7 +139,9 @@ footer {
   }
 }
 
+
 #wrapper {
+  @include flex-column (flex, column);
   background-image: url(../images/back-g.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -169,16 +149,23 @@ footer {
   margin: auto;
   padding: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   max-width: 1000px;
 }
 
 @media (min-width:700px) {
+  header {
+    background-image: url(../images/head.jpg);
+  }
 
-  .container p {
-    margin-left: 30px;
+  p {
+    font-size: 1.2em;
+  }
 
+
+  .tas img {
+    margin: 15px;
+    width: 80px;
+    @include rounded-shaded-box(5px, 10px, 10px);
   }
 
   header {
@@ -197,7 +184,7 @@ footer {
     margin: 10px;
     border: none;
     min-width: 150px;
-    @include rounded-shaded-box(5px, 5px, 8px, $dark-grey-color);
+    @include rounded-shaded-box(5px, 5px, 8px);
   }
 
   input {
@@ -205,17 +192,9 @@ footer {
     color: $dark-grey-color;
     text-decoration: none;
     border: none;
-    @include rounded-shaded-box(5px, 5px, 8px, $dark-grey-color);
-  }
-
-  img {
-    margin: 20px;
-    width: 80px;
-    @include rounded-shaded-box(5px, 10px, 10px, $black-color);
-  }
-  .dice p{
-    font-size: 1.2em;
+    @include rounded-shaded-box(5px, 5px, 8px);
   }
 }
+
 
 /*# sourceMappingURL=styles.css.map */

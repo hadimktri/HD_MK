@@ -380,6 +380,25 @@ template {
   border-radius: 5px;
 }
 
+#winner-Display {
+  min-height: 80px;
+}
+#winner-Display .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #953341;
+  padding: 5px;
+}
+#winner-Display .content p {
+  margin: 0;
+  padding: 5px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -398,16 +417,14 @@ html {
   font-family: roboto-bold;
   src: url(../fonts/Roboto/Roboto-Bold.ttf);
 }
-#winner-Display {
-  min-height: 80px;
-}
-
 header {
   padding: 5px;
   border-radius: 0 0 5px 5px;
   font-family: roboto;
-  text-align: center;
   box-shadow: 0px 5px 5px #414047;
+  background-color: #ffffff;
+  background-size: cover;
+  text-align: center;
 }
 
 h1 {
@@ -415,14 +432,8 @@ h1 {
   text-transform: uppercase;
   font-family: roboto-bold;
   margin: 5px;
-  font-size: 1.5em;
-}
-
-img {
-  margin: 0 5px;
-  width: 60px;
-  box-shadow: 5px 10px 10px #414047;
-  border-radius: 10px;
+  margin-left: 30px;
+  font-size: 1.2em;
 }
 
 main {
@@ -441,36 +452,26 @@ main div > div p {
   color: #ffffff;
   text-align: center;
   font-family: roboto-bold;
-  margin-left: 10px;
+  margin-left: 15px;
 }
-main div > div .tas {
-  flex-direction: row;
-  justify-content: center;
+main div > div .dice {
+  background-color: #414047;
 }
 main div > div div {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-main .content {
-  width: 100%;
+main div > div div .tas {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  background-color: #953341;
-  padding: 5px;
 }
-main .content p {
-  margin: 0;
-  padding: 5px;
-  color: #000000;
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-.PlayerName {
-  font-size: 1.2em;
-  margin-top: 0;
+main div > div div img {
+  margin: 5px 20px;
+  width: 60px;
+  box-shadow: 5px 10px 10px #414047;
+  border-radius: 8px;
 }
 
 .bottom {
@@ -510,10 +511,6 @@ main .content p {
   transform: scale(1.01);
 }
 
-.dice {
-  background-color: #414047;
-}
-
 footer {
   background-color: #000000;
   border-radius: 5px 5px 0 0;
@@ -530,6 +527,8 @@ footer p {
 }
 
 #wrapper {
+  display: flex;
+  flex-direction: column;
   background-image: url(../images/back-g.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -537,14 +536,21 @@ footer p {
   margin: auto;
   padding: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   max-width: 1000px;
 }
 
 @media (min-width: 700px) {
-  .container p {
-    margin-left: 30px;
+  header {
+    background-image: url(../images/head.jpg);
+  }
+  p {
+    font-size: 1.2em;
+  }
+  .tas img {
+    margin: 15px;
+    width: 80px;
+    box-shadow: 5px 10px 10px #414047;
+    border-radius: 10px;
   }
   header {
     padding: 10px;
@@ -570,15 +576,6 @@ footer p {
     border: none;
     box-shadow: 5px 5px 10px #414047;
     border-radius: 8px;
-  }
-  img {
-    margin: 20px;
-    width: 80px;
-    box-shadow: 5px 10px 10px #414047;
-    border-radius: 10px;
-  }
-  .dice p {
-    font-size: 1.2em;
   }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,9 +1,14 @@
-$red-color: #dc3f2e;
+$red-color: #953341;
 $black-color: #000000;
 $dark-grey-color: #414047;
 $light-grey-color: #c2c2c2;
 $white-color: #ffffff;
 $blue-color: #1b3c66;
+
+@mixin flex-column ($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
+}
 
 #pop-up {
   position: fixed;
@@ -44,5 +49,25 @@ $blue-color: #1b3c66;
   img {
     width: 250px;
     border-radius: 5px;
+  }
+}
+
+#winner-Display {
+  min-height: 80px;
+
+  .content {
+    width: 100%;
+    @include flex-column (flex, column);
+    justify-content: center;
+    background-color: $red-color;
+    padding: 5px;
+
+    p {
+      margin: 0;
+      padding: 5px;
+      color: $black-color;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
   }
 }

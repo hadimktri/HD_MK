@@ -1,13 +1,9 @@
-let $totals1 = 0;
-let $totals2 = 0;
-let $poptimeout;
-let $i = 1;
 //---------------------------------------------------------------------class defined
 class Player {
-    constructor($name, $score, $totalScore) {
-        this.$name = $name;
-        this.$score = $score;
-        this.$totalScore = $totalScore;
+    constructor($dice1, $dice2, $score) {
+        this.$dice1 = $dice1;
+        this.$dice2 = $dice2;
+        this.$score = $score
         this.$dices = [];
     }
 }
@@ -16,39 +12,46 @@ Player.prototype.Numb = function () {
     for (let x = 0; x < 2; x++) {
         let d = Math.floor(Math.random() * 6) + 1;
         this.$dices.push(d);
-    } return this.$dices
+    }
+    this.$dice1 = this.$dices[0]
+    this.$dice2 = this.$dices[1]
 }
 //---------------------------------------------------------------------score possibilities checking
 Player.prototype.diceConditions = function (d1, d2) {
     if (d1 === d2 && d1 != 1) {
-        return (d1 + d2) * 2;
+        this.$score = (d1 + d2) * 2;
     } else if (d1 === 1 || d2 === 1) {
-        return 0;
+        this.$score = 0;
     } else {
-        return d1 + d2;
+        this.$score = d1 + d2;
     }
 }
 //---------------------------------------------------------------------main dice role function
+let $totalPlayer1 = 0;
+let $totalPlayer2 = 0;
 function rollTheDice() {
     setTimeout(function () {
+
         const player1 = new Player();
-        let $dice11 = player1.Numb();
-        $(".img1-1").attr("src", `../images/dice${$dice11[0]}.png`);
-        $(".img1-2").attr("src", `../images/dice${$dice11[1]}.png`);
-        let $score1 = player1.diceConditions($dice11[0], $dice11[1])
-        $(".Player1").html(`Score: ${$score1}`);
-        $totals1 += $score1;
-        $("#totals1").html(`Total: ${$totals1}`);
+        player1.Numb();
+        $(".img1-1").attr({ src: `../images/dice${player1.$dice1}.png`, alt: `dice${player1.$dice1}` });
+        $(".img1-2").attr({ src: `../images/dice${player1.$dice2}.png`, alt: `dice${player1.$dice2}` });
+        player1.diceConditions(player1.$dice1, player1.$dice2)
+        $(".Player1").html(`Score: ${player1.$score}`);
+        $totalPlayer1 += player1.$score;
+        $("#totals1").html(`Total: ${$totalPlayer1}`);
+
         const player2 = new Player();
-        let $dice22 = player2.Numb();
-        $(".img2-1").attr("src", `../images/dice${$dice22[0]}.png`);
-        $(".img2-2").attr("src", `../images/dice${$dice22[1]}.png`);
-        let $score2 = player2.diceConditions($dice22[0], $dice22[1])
-        $(".Player2").html(`Score: ${$score2}`);
-        $totals2 += $score2;
-        $("#totals2").html(`Total: ${$totals2}`);
-        if ($totals1 !== $totals2) {
-            if ($totals1 < $totals2) {
+        player2.Numb();
+        $(".img2-1").attr({ src: `../images/dice${player2.$dice1}.png`, alt: `dice${player2.$dice1}` });
+        $(".img2-2").attr({ src: `../images/dice${player2.$dice2}.png`, alt: `dice${player2.$dice2}` });
+        player2.diceConditions(player2.$dice1, player2.$dice2)
+        $(".Player2").html(`Score: ${player2.$score}`);
+        $totalPlayer2 += player2.$score;
+        $("#totals2").html(`Total: ${$totalPlayer2}`);
+
+        if ($totalPlayer1 !== $totalPlayer2) {
+            if ($totalPlayer1 < $totalPlayer2) {
                 $("#winner").html("Computer WINS!");
             } else {
                 $("#winner").html(`${$("#player-name").val().toUpperCase()} WINS!`);
@@ -56,21 +59,25 @@ function rollTheDice() {
         } else {
             $("#winner").html(`Total scores are the same!`);
         }
-    }, 500);
+    }, 400);
 }
 //---------------------------------------------------------------------events
+let $poptimeout;
+let $i = 1;
 $(document).on("ready", $poptimeout);
 $poptimeout = setTimeout(() => $("#pop-up").css("display", "block"), 600);
 $(document).on("click", () => $("#pop-up").fadeOut());
 $(document).on("click", () => clearTimeout($poptimeout));
 $("#reset").on("click", () => location.reload(true));
 $('.content').hide();
+
 $("#roll").on("click", function () {
     $("#roll").html("Roll The Dice");
     $("#roll").css("backgroundColor", "#3f5199")
     $(".content").fadeOut();
     $(".Player1Name").html($("#player-name").val().toUpperCase())
     $(".content").fadeOut();
+
     if ($i <= 3) {
         rollTheDice();
         $i++;
@@ -80,8 +87,9 @@ $("#roll").on("click", function () {
         $('.content').slideToggle();
         $(".img").attr("src", "../images/dice1.png");
         $i = 1;
-        $totals1 = 0;
-        $totals2 = 0;
+        $(".sc").html(`Score: 00`);
+        $totalPlayer1 = 0;
+        $totalPlayer2 = 0;
     }
 });
 
